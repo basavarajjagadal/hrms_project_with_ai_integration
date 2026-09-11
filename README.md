@@ -2,6 +2,9 @@
 
 A Django-based Human Resource Management System for managing employees, attendance, onboarding, leave requests, and HR/admin workflows.
 
+<img width="1920" height="1080" alt="project image" src="https://github.com/user-attachments/assets/36afe34b-1743-49ed-beb7-60a73705d993" />
+
+
 ## Project Overview
 
 This project includes the following modules:
