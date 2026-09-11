@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'employees/profile.css' %}">
+{% endblock %}
+
+<h2>Employee profile</h2>
+
+{% block content %}
+<fieldset>
+    <legend><b>Personal Information</b></legend>
+<p><b>First Name: </b>{{user.first_name}}</p>
+<p><b>Last Name: </b>{{user.last_name}}</p>
+<p><b>Email: </b>{{user.email}}</p>
+<p><b>Username: </b>{{user.username}}</p>
+
+<hr>
+
+<p><b>Employee ID: </b>{{employee.employee_id}}</p>
+<p><b>Department: </b>{{employee.department}}</p>
+<p><b>Designation: </b>{{employee.designation}}</p>
+<p><b>Date of Joining: </b>{{employee.date}}</p>
+
+</fieldset>
+
+<br>
+{% url "employee_dashboard" as employee_dashboard %}
+<button type="button" onclick="window.location.href='{{employee_dashboard}}'">Back to Dashboard</button>
+{% endblock %}
+

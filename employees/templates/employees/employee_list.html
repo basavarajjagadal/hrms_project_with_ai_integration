@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'employees/employee_list.css' %}">
+{% endblock %}
+{% block content %}
+<h2 class="emplist" >Employee List</h2>
+<form method="get">
+    {% csrf_token %}
+    <input list="roles" type="text" name="department" placeholder="filter by department">
+
+    <datalist id="roles">
+        <option value="Engineering"></option>
+        <option value="HR"></option>
+        <option value="Finance"></option>        
+    </datalist>
+
+    <button class="btn1" type="submit">Filter</button>
+</form>
+<br>
+<table >
+    <tr>
+        <th>Employee ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Department</th>
+        <th>Designation</th>
+        <th>Joining Date</th>
+        <th>View</th>
+    </tr>
+    {% for emp in employees %}
+    <tr>
+        <td>{{emp.employee_id}}</td>
+        <td>{{emp.username}}</td>
+        <td>{{emp.user.email}}</td>
+        <td>{{emp.department}}</td>
+        <td>{{emp.designation}}</td>
+        <td>{{emp.joining_date}}</td>
+        <td>
+            {% url "employee_detail" emp.id as employee_detail %}
+            <button class="btn" type="button" onclick="window.location.href='{{employee_detail}}'">Details</button>
+        </td>
+        
+    </tr>
+    {% endfor %}
+</table>
+<p class="totalemp"><b>Total Employees Count: </b>{{employees.count}}</p>
+{% url "menu" as menu %}
+<button class="btn" type="button" onclick="window.location.href='{{menu}}'">Back</button>
+{% endblock %}

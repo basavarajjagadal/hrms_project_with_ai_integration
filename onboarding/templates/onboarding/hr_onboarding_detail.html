@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Onboarding Details - {{ employee.user.get_full_name }}</h2>
+
+
+
+{% url "hr_onboarding_list" as hr_onboarding_list %}
+<button type="button" onclick="window.location.href='{{hr_onboarding_list}}'">Back to List</button>
+
+
+<hr>
+
+<h3>Employee Information</h3>
+
+<p><b>Employee ID:</b> {{ employee.employee_id }}</p>
+<p><b>Name:</b> {{ employee.user.get_full_name }}</p>
+<p><b>Email:</b> {{ employee.user.email }}</p>
+<p><b>Department:</b> {{ employee.department }}</p>
+<p><b>Designation:</b> {{ employee.designation }}</p>
+<p><b>Joining Date:</b> {{ employee.joining_date }}</p>
+
+<hr>
+
+<h3>Onboarding Status</h3>
+
+<p><b>Status:</b> {{ onboarding.status }}</p>
+
+<p><b>ID Proof Submitted:</b>
+{% if onboarding.id_proof_submitted %}
+Yes
+{% else %}
+No
+{% endif %}
+</p>
+
+<p><b>Bank Details Added:</b>
+{% if onboarding.bank_details_added %}
+Yes
+{% else %}
+No
+{% endif %}
+</p>
+
+<p><b>HR Verified:</b>
+{% if onboarding.hr_verified %}
+Yes
+{% else %}
+No
+{% endif %}
+</p>
+
+<p><b>Laptop Assigned:</b>
+{% if onboarding.laptop_assigned %}
+Yes
+{% else %}
+No
+{% endif %}
+</p>
+
+<hr>
+
+{% if id_proof %}
+<h3>ID Proof</h3>
+
+<p><b>Type:</b> {{ id_proof.get_id_type_display }}</p>
+<p><b>Number:</b> {{ id_proof.id_number }}</p>
+<p><b>Uploaded:</b> {{ id_proof.uploaded_at }}</p>
+<p><b>Document:</b>
+<a href="{{ id_proof.document.url }}" target="_blank">View Document</a>
+</p>
+
+<hr>
+{% endif %}
+
+
+{% if bank_details %}
+<h3>Bank Details</h3>
+
+<p><b>Bank Name:</b> {{ bank_details.bank_name }}</p>
+<p><b>Account Number:</b> {{ bank_details.account_number }}</p>
+<p><b>IFSC Code:</b> {{ bank_details.ifsc_code }}</p>
+
+<hr>
+{% endif %}
+
+
+{% if laptop_allocation %}
+<h3>Laptop Allocation</h3>
+
+<p><b>Serial Number:</b> {{ laptop_allocation.laptop_serial }}</p>
+<p><b>Issued Date:</b> {{ laptop_allocation.issued_date }}</p>
+<p><b>Issued By:</b> {{ laptop_allocation.issued_by.get_full_name }}</p>
+
+<hr>
+{% endif %}
+
+
+{% if verification %}
+<h3>Verification</h3>
+
+<p><b>Verified:</b>
+{% if verification.verified %}
+Yes
+{% else %}
+No
+{% endif %}
+</p>
+
+<hr>
+
+{% if verification.verified_by %}
+<p><b>Verified By:</b> {{ verification.verified_by.get_full_name }}</p>
+{% endif %}
+
+
+
+<hr>
+{% endif %}
+
+
+
+
+{% if not onboarding.hr_verified %}
+<h3>Actions</h3>
+{% url "hr_verify_documents" onboarding.id as hr_verify_documents %}
+<button type="button" onclick="window.location.href='{{hr_verify_documents}}'">Verify Documents</button>
+{% endif %}
+
+{% if not onboarding.laptop_assigned %}
+{% url "hr_assign_laptop" onboarding.id as hr_assign_laptop %}
+<button type="button" onclick="window.location.href='{{hr_assign_laptop}}'">Assign Laptop</button>
+{% endif %}
+
+{% if onboarding.id_proof_submitted and onboarding.bank_details_added and onboarding.hr_verified and onboarding.laptop_assigned and onboarding.status != 'completed' %}
+{% url "hr_complete_onboarding" onboarding.id as hr_complete_onboarding %}
+<button type="button" onclick="window.location.href='{{hr_complete_onboarding}}'">Complete Onboarding</button>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% load static %}
+<title>HRMS</title>
+
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+{% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+{% include "navbar.html" %}
+
+<div class="container">
+
+{% include "sidebar.html" %}
+
+<div class="content">
+{% block content %}
+{% endblock %}
+</div>
+
+</div>
+
+<!-- 🤖 AI BUTTON -->
+<button onclick="openAI()" class="ai-button">🤖</button>
+
+<!-- WHATSAPP -->
+{% if user.role == "employee" %}
+<a href="https://wa.me/919113508184?text=Hello%20HR,%20this%20is%20{{request.user.username}}"
+   class="whatsapp-float"
+   target="_blank">
+   <i class="fab fa-whatsapp"></i>
+</a>
+{% endif %}
+
+<!-- GMAIL -->
+{% if user.role == "employee" %}
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=basavarajjagadal17@gmail.com&su=HR%20Support&body=Hello%20HR"
+   class="gmail-float"
+   target="_blank">
+   <i class="fas fa-envelope"></i>
+</a>                        
+{% endif %} 
+
+<!-- ================= AI SIDEBAR ================= -->
+<div id="aiSidebar" class="ai-sidebar">
+
+    <div class="ai-header">
+        <h3>🤖 AI Copilot</h3>
+        <span onclick="closeAI()">✖</span>
+    </div>
+
+    <div class="ai-body">
+
+        <input id="aiQuestion" placeholder="Ask something..." />
+        <button onclick="askAI()">Ask</button>
+
+        <div class="ai-response">
+            <h4>Answer:</h4>
+            <p id="aiAnswer"></p>
+
+            <h4>Query Plan:</h4>
+            <pre id="aiPlan"></pre>
+
+            <h4>Results:</h4>
+            <pre id="aiResults"></pre>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- OVERLAY -->
+<div id="overlay" class="overlay" onclick="closeAI()"></div>
+
+<!-- ================= JS ================= -->
+<script>
+function openAI() {
+   document.getElementById("aiSidebar").classList.add("active");
+   document.getElementById("overlay").classList.add("active");
+}
+
+function closeAI() {
+    document.getElementById("aiSidebar").classList.remove("active");
+    document.getElementById("overlay").classList.remove("active");
+}
+
+function askAI() {
+    let q = document.getElementById("aiQuestion").value;
+
+    fetch(`/ai/ask?q=${encodeURIComponent(q)}`)
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById("aiAnswer").innerText = data.answer || "";
+            document.getElementById("aiPlan").innerText = data.plan || "";
+            document.getElementById("aiResults").innerText =
+                JSON.stringify(data.results, null, 2);
+        });
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} the     {% endcomment %}
+
+
+
+

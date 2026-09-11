@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'onboarding/hr_onboarding_list.css' %}">
+{% endblock %}
+{% block title %}HR - Onboarding Management{% endblock %}
+
+{% block content %}
+
+{% url "hr_add_onboarding" as hr_add_onboarding %}
+<button class="onboardingbutton" type="button" onclick="window.location.href='{{hr_add_onboarding}}'">Add New Employee To Onboarding List</button>
+<form method="get">
+    {% csrf_token %}
+
+<select name="status">
+<option value="">All</option>
+<option value="completed" {% if request.GET.status == "completed" %}selected{% endif %}>Completed</option>
+<option value="pending" {% if request.GET.status == "pending" %}selected{% endif %}>Pending</option>
+<option value="in_progress" {% if request.GET.status == "in_progress" %}selected{% endif %}>In_progress</option>
+</select>
+<button type="submit">Filter</button>
+</form>
+<br>
+
+<table>
+<tr>
+<th>Employee ID</th>
+<th>Employee Name</th>
+<th>Department</th>
+<th>Status</th>
+<th>ID Proof</th>
+<th>Bank Details</th>
+<th>HR Verified</th>
+<th>Laptop Assigned</th>
+<th>Actions</th>
+</tr>
+{% for onboarding in onboardings %}
+<tr>
+<td>{{onboarding.employee.employee_id}}</td>
+<td>{{onboarding.employee.username}}</td>
+<td>{{onboarding.employee.department}}</td>
+<td>{{onboarding.status}}</td> 
+<td>
+    
+{% if onboarding.id_proof_submitted %}
+✔
+{% else %}
+❌
+{% endif %}
+</td>
+
+<td>
+{% if onboarding.bank_details_added %}
+✔
+{% else %}
+❌
+{% endif %}
+</td>
+
+<td>
+{% if onboarding.hr_verified %}
+✔
+{% else %}
+❌
+{% endif %}
+</td>
+
+<td>
+{% if onboarding.laptop_assigned %}
+✔
+{% else %}
+❌
+{% endif %}
+</td>
+<td>
+{% url "hr_onboarding_detail" onboarding.id as hr_onboarding_detail %}
+<button type="button" onclick="window.location.href='{{hr_onboarding_detail}}'">View Details</button>
+</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}
+
+

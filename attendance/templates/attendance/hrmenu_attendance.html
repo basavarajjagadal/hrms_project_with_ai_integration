@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'attendance/hrmenu_attendance.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="attendance-card">
+<h2 class="attendanceview">HR Attendance View</h2>
+
+
+{% url "todayattandance" as todayattandance %}
+<button class="btn" onclick="window.location.href='{{ todayattandance }}'">Today's Attendance Summary</button>
+{%url "today_attendance_details" as today_attendance_details %}
+<button class="btn" onclick="window.location.href='{{today_attendance_details}}'">Today's Attendance Details</button>
+{% url "attendencerecords" as attendencerecords %}
+<button class="btn" onclick="window.location.href='{{attendencerecords}}'">Attendance History</button>
+
+</div>
+{% endblock %}

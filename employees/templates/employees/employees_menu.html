@@ -1,0 +1,14 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'employees/employees_menu.css' %}">
+{% endblock %}
+{% block content %}
+<div class="employee-menu-card">
+<p class="empmenu">employees menu</p>
+
+<button class="btn" onclick="window.location.href='list/'">Employee List</button>
+<button  class="btn" onclick="window.location.href='add/'">Create User and Employee</button>
+</div>
+{% endblock %}

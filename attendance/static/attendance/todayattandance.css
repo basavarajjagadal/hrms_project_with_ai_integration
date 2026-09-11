@@ -1,0 +1,93 @@
+/* ===== PAGE TITLE ===== */
+h1 {
+    color: #1f2937;
+    margin-bottom: 15px;
+}
+
+/* ===== SUMMARY CONTAINER ===== */
+.summary-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 500px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+
+    padding: 14px;
+    margin-bottom: 15px;
+
+    border: none;
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: 0.3s;
+    background: #4b98d6;
+
+    color: white;
+}
+.btn:hover{
+    background: #22c55e;
+    transform: scale(1.06);
+}
+/* ===== TEXT ===== */
+.summary-card p {
+    font-size: 15px;
+    color: #374151;
+    margin: 8px 0;
+}
+
+/* ===== HIGHLIGHT VALUES ===== */
+.summary-card b {
+    font-size: 16px;
+}
+
+/* ===== COLOR CODING ===== */
+.summary-card p:nth-child(3) b {
+    color: #1f2937; /* total */
+}
+
+.summary-card p:nth-child(4) b {
+    color: #22c55e; /* present */
+}
+
+.summary-card p:nth-child(5) b {
+    color: #ef4444; /* absent */
+}
+
+.summary-card p:nth-child(6) b {
+    color: #f59e0b; /* leave */
+}
+
+/* ===== DATE STYLE ===== */
+.summary-card strong {
+    color: #4b98d6;
+}
+
+/* ===== WARNING BOX ===== */
+.summary-card div {
+    margin-top: 15px;
+    padding: 12px;
+
+    background: #fff3cd;
+    color: #856404;
+
+    border-left: 5px solid #f59e0b;
+    border-radius: 6px;
+}
+
+/* ===== HOVER EFFECT ===== */
+.summary-card {
+    transition: 0.3s;
+}
+
+.summary-card:hover {
+    transform: translateY(3px);
+}

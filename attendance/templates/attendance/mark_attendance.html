@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'attendance/mark_attendance.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<p>Date: <b>{{ date|date:'d-m-Y' }}</b></p>
+<h3>Mark Attendance - {{ employee.user.username }}</h3>
+
+<form method="post">
+{% csrf_token %}
+
+<label>Status</label>
+<select name="status">
+    <option value="present" {% if attendance and attendance.status == "present" %}selected{% endif %}>Present</option>
+    <option value="absent" {% if attendance and attendance.status == "absent" %}selected{% endif %}>Absent</option>
+    <option value="leave" {% if attendance and attendance.status == "leave" %}selected{% endif %}>Leave</option>
+</select>
+
+<br><br>
+
+<label>Check In</label>
+<input type="time" name="check_in"
+       value="{% if attendance and attendance.check_in_time %}{{ attendance.check_in_time|time:'H:i' }}{% endif %}">
+
+<br><br>
+
+<label>Check Out</label>
+<input type="time" name="check_out"
+       value="{% if attendance and attendance.check_out_time %}{{ attendance.check_out_time|time:'H:i' }}{% endif %}">
+
+<br><br>
+
+<button type="submit">Save</button>
+</form>
+
+<br>
+
+<a href="{% url 'today_attendance_details' %}">
+    <button type="button">Cancel</button>
+</a>
+
+{% endblock %}

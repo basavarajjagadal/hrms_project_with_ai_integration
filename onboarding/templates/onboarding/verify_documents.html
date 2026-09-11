@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% load  static  %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'onboarding/verify_documents.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h2>Document Verification Status</h2>
+
+
+{% url "onboarding_status" as onboarding_status %}
+<button type="button" onclick="window.location.href='{{onboarding_status}}'">Back to Status</button>
+
+<p>
+<strong>Note:</strong> Your documents will be reviewed by HR. 
+You will be notified once verification is complete.
+</p>
+
+
+<p class="status-box">
+<strong>Current Status:</strong> {{ onboarding.get_status_display }}
+</p>
+
+<p class="warning-box">
+<strong>HR Verification:</strong>
+
+{% if onboarding.hr_verified %}
+Documents have been verified by HR
+{% else %}
+Documents are pending HR verification
+{% endif %}
+
+</p>
+
+{% if onboarding.laptop_assigned %}
+
+<p class="success-box">
+<strong>Laptop Assignment:</strong> Laptop has been assigned
+</p>
+
+{% endif %}
+
+{% endblock %}

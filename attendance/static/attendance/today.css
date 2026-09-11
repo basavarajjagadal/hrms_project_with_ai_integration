@@ -1,0 +1,52 @@
+/* ===== PAGE TITLE ===== */
+.h2heading {
+    font-size: 24px;
+    color: #1f2937;
+    margin-bottom: 20px;
+}
+
+/* ===== CARD CONTAINER ===== */
+.attendance-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 400px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ===== TEXT ===== */
+.attendance-card p {
+    font-size: 15px;
+    color: #374151;
+    margin-bottom: 10px;
+}
+
+.attendance-card p b {
+    color: #111827;
+    font-weight: 600;
+}
+
+.btn {
+    background: #4b98d6;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+.btn:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.btn-in {
+    background: #22c55e;
+}
+.btn-out {
+    background: #ef4444;
+}

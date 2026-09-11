@@ -1,0 +1,37 @@
+form{
+    background: white;
+    max-width:500px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    
+    
+}
+
+.btn {
+    background: #4b98d6;
+    color: white;
+
+    border: none;
+    padding: 10px;
+
+    border-radius: 6px;
+    font-size: 14px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn:hover{
+    background: #22c55e;
+
+}
+
+input{
+    width: 50%;
+    padding: 8px 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+
+}

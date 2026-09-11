@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI HRMS Copilot</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+        }
+        input {
+            width: 400px;
+            padding: 10px;
+        }
+        button {
+            padding: 10px;
+        }
+        .response {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+        }
+        body{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>🤖 AI HRMS Copilot</h2>
+
+    <input id="question" placeholder="Ask something..." />
+    <button onclick="askAI()">Ask</button>
+
+    <div class="response">
+        <h3>Answer:</h3>
+        <p id="answer"></p>
+
+        <h4>Query Plan:</h4>
+        <pre id="plan"></pre>
+
+        <h4>Results:</h4>
+        <pre id="results"></pre>
+    </div>
+
+<script>
+function askAI() {
+    let q = document.getElementById("question").value;
+
+    fetch(`/ai/ask?q=${encodeURIComponent(q)}`)
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById("answer").innerText = data.answer || "";
+            document.getElementById("plan").innerText = JSON.stringify(data.plan, null, 2);
+            document.getElementById("results").innerText = JSON.stringify(data.results, null, 2);
+        });
+}
+</script>
+
+</body>
+</html>

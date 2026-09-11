@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'onboarding/upload_id.css' %}">
+{% endblock %}
+
+{% block title %}Upload ID Proof{% endblock %}
+
+{% block content %}
+
+<h3 class="h3heading">Upload ID Proof</h3>
+
+{% url "onboarding_status" as onboarding_status %}
+<button type="button" onclick="window.location.href='{{onboarding_status}}'">Back</button>
+<br>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" style="color: red;" >
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %} 
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <label for="id_type">ID Type:</label><br>
+    <select id="id_type" name="id_type" required>
+        <option value="">Select ID Type</option>
+        {% for value, label in id_types %}
+            <option value="{{ value }}" 
+                {% if id_proof and id_proof.id_type == value %}selected{% endif %}>
+                {{ label }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <br><br>
+
+    <label for="id_number">ID Number:</label><br>
+    <input type="text" id="id_number" name="id_number"
+           value="{% if id_proof %}{{ id_proof.id_number }}{% endif %}" required>
+
+    <br><br>
+
+    <label for="document">Document:</label><br>
+    <input type="file" id="document" name="document" accept=".pdf,.jpg,.jpeg,.png" >
+
+    {% if id_proof %}
+        <p>Current file: {{ id_proof.document.name }}</p>
+    {% endif %}
+
+    <br><br>
+
+    <button type="submit">
+        {% if id_proof %}Update ID Proof{% else %}Upload ID Proof{% endif %}
+    </button>
+
+    {% url "onboarding_status" as onboarding_status %}
+    <button class="btn" type="button" onclick="window.location.href='{{onboarding_status}}'">Cancel</button>
+</form>
+
+
+{% endblock %}

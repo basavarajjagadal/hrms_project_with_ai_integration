@@ -1,0 +1,54 @@
+/* ===== PAGE HEADING ===== */
+.empdashboard {
+    color: #1f2937;
+    margin-bottom: 10px;
+}
+
+/* Welcome text */
+.welcomeemp {
+    color: #4b5563;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+/* ===== DASHBOARD CARD ===== */
+.dashboard-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 500px;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    background: #4b98d6;
+    color: white;
+
+    border: none;
+    padding: 10px 16px;
+
+    border-radius: 8px;
+    font-size: 14px;
+
+    cursor: pointer;
+    transition: 0.3s;
+
+    margin-right: 10px;
+}
+
+/* Hover */
+.btn:hover {
+    background: #357abd;
+    transform: scale(1.05);
+}
+
+/* Secondary button */
+button:nth-of-type(2) {
+    background: #6b7280;
+}
+
+button:nth-of-type(2):hover {
+    background: #4b5563;
+}

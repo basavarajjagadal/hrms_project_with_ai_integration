@@ -1,0 +1,54 @@
+/* ===== PAGE TITLE ===== */
+.attendanceview {
+    color: #1f2937;
+    margin-bottom: 20px;
+}
+
+/* ===== CONTAINER CARD ===== */
+.attendance-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 500px;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    display: block;
+    width: 100%;
+
+    padding: 14px;
+    margin-bottom: 15px;
+
+    border: none;
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: 0.3s;
+
+    color: white;
+}
+
+/* Different colors for each action */
+.btn:nth-of-type(1) {
+    background: #4b98d6;
+}
+
+.btn:nth-of-type(2) {
+    background: #22c55e;
+}
+
+.btn:nth-of-type(3) {
+    background: #6366f1;
+}
+
+/* Hover effect */
+.btn:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
+}

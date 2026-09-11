@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Assign Laptop - {{ employee.user.get_full_name }}</h2>
+
+<a href="{% url 'hr_onboarding_detail' onboarding.id %}">Back to Details</a>
+{% url "hr_onboarding_detail" onboarding.id as hr_onboarding_detail %}
+<button type="button" onclick="window.location.href='{{hr_onboarding_detail}}'">Back to Details</button>
+<hr>
+
+<form method="post">
+{% csrf_token %}
+
+<p>
+<label>Laptop Serial Number:</label><br>
+<input type="text" name="laptop_serial"
+value="{% if laptop_allocation %}{{ laptop_allocation.laptop_serial }}{% endif %}" required>
+</p>
+
+<p>
+<label>Issued Date:</label><br>
+<input type="date" name="issued_date"
+value="{% if laptop_allocation %}
+{{ laptop_allocation.issued_date|date:'Y-m-d' }}
+{% else %}
+{{ onboarding.employee.joining_date|date:'Y-m-d' }}
+{% endif %}" required>
+</p>
+
+<p>
+<button type="submit">
+{% if laptop_allocation %}
+Update Laptop Assignment
+{% else %}
+Assign Laptop
+{% endif %}
+</button>
+
+{% url "hr_onboarding_detail" onboarding.id as hr_onboarding_detail %}
+<button type="button" onclick="window.location.href='{{hr_onboarding_detail}}'">Cancel</button>
+
+</p>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,131 @@
+
+
+{% extends 'base.html' %}
+
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'attendance/attendencerecords.css' %}">
+{% endblock %}
+{% block content %}
+
+<h2 class="allrecords">All Attendence Records</h2>
+
+<form method="get">
+
+<label>Date:</label>
+<input type="date" name="date" value="{{ request.GET.date }}">
+
+<label>Month:</label>
+<select name="month">
+    <option value="">All</option>
+    <option value="1" {% if request.GET.month == "1" %}selected{% endif %}>Jan</option>
+    <option value="2" {% if request.GET.month == "2" %}selected{% endif %}>Feb</option>
+    <option value="3" {% if request.GET.month == "3" %}selected{% endif %}>Mar</option>
+    <option value="4" {% if request.GET.month == "4" %}selected{% endif %}>Apr</option>
+    <option value="5" {% if request.GET.month == "5" %}selected{% endif %}>May</option>
+    <option value="6" {% if request.GET.month == "6" %}selected{% endif %}>Jun</option>
+    <option value="7" {% if request.GET.month == "7" %}selected{% endif %}>Jul</option>
+    <option value="8" {% if request.GET.month == "8" %}selected{% endif %}>Aug</option>
+    <option value="9" {% if request.GET.month == "9" %}selected{% endif %}>Sep</option>
+    <option value="10" {% if request.GET.month == "10" %}selected{% endif %}>Oct</option>
+    <option value="11" {% if request.GET.month == "11" %}selected{% endif %}>Nov</option>
+    <option value="12" {% if request.GET.month == "12" %}selected{% endif %}>Dec</option>
+</select>
+
+<label>Year:</label>
+<select name="year">
+    <option value="">All</option>
+    <option value="2025" {% if request.GET.year == "2025" %}selected{% endif %}>2025</option>
+    <option value="2026" {% if request.GET.year == "2026" %}selected{% endif %}>2026</option>
+    <option value="2027" {% if request.GET.year == "2027" %}selected{% endif %}>2027</option>
+</select>
+
+<label>Employee:</label>
+<select name="employee">
+    <option value="">All</option>
+    {% for emp in employees %}
+        <option value="{{ emp.id }}" {% if request.GET.employee == emp.id|stringformat:"s" %}selected{% endif %}>
+            {{ emp.user.username }}
+        </option>
+    {% endfor %}
+</select>
+
+<label>Status:</label>
+<select name="status">
+    <option value="">All</option>
+    <option value="present" {% if request.GET.status == "present" %}selected{% endif %}>Present</option>
+    <option value="absent" {% if request.GET.status == "absent" %}selected{% endif %}>Absent</option>
+    <option value="leave" {% if request.GET.status == "leave" %}selected{% endif %}>Leave</option>
+</select>
+
+<button class="btn" type="submit">Filter</button>
+
+</form>
+
+<br>
+
+<table >
+    <tr>
+        <th>Employee Name</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Check In Time</th>
+        <th>Check Out Time</th>  
+        {% comment %} <th>Worked Time</th> {% endcomment %}
+    </tr>
+
+    {% for record in page_obj %}
+    <tr>
+        <td>{{ record.employee.user.username }}</td>
+        <td>{{ record.date }}</td>
+        <td>{{ record.status }}</td>
+        <td>{{ record.check_in_time }}  </td>
+        <td>{{ record.check_out_time }}</td>
+        {% comment %} {% if record.worked_hours or record.worked_minutes %}
+            <td>{{ record.worked_hours }}h {{ record.worked_minutes }}m</td>
+        {% else %}
+            <td>-</td>
+        {% endif %} {% endcomment %}
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="5">No records found</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+
+<!-- Pagination -->
+
+{% if page_obj.has_previous %}
+    <a class="pagination" href="?page=1&date={{ request.GET.date }}&month={{ request.GET.month }}&year={{ request.GET.year }}&employee={{ request.GET.employee }}&status={{ request.GET.status }}">First</a>
+
+    <a class="pagination" href="?page={{ page_obj.previous_page_number }}&date={{ request.GET.date }}&month={{ request.GET.month }}&year={{ request.GET.year }}&employee={{ request.GET.employee }}&status={{ request.GET.status }}">Previous</a>
+{% endif %}
+
+<span>
+    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+</span>
+
+{% if page_obj.has_next %}
+    <a class="pagination" href="?page={{ page_obj.next_page_number }}&date={{ request.GET.date }}&month={{ request.GET.month }}&year={{ request.GET.year }}&employee={{ request.GET.employee }}&status={{ request.GET.status }}">Next</a>
+
+    <a class="pagination" href="?page={{ page_obj.paginator.num_pages }}&date={{ request.GET.date }}&month={{ request.GET.month }}&year={{ request.GET.year }}&employee={{ request.GET.employee }}&status={{ request.GET.status }}">Last</a>
+{% endif %}
+
+<br><br>
+
+<!-- Page Numbers -->
+
+{% for num in page_obj.paginator.page_range %}
+    {% if page_obj.number == num %}
+        <strong>{{ num }}</strong>
+    {% else %}
+        <a class="pagination" href="?page={{ num }}&date={{ request.GET.date }}&month={{ request.GET.month }}&year={{ request.GET.year }}&employee={{ request.GET.employee }}&status={{ request.GET.status }}">
+            {{ num }}
+        </a>
+    {% endif %}
+{% endfor %}
+
+{% endblock %}

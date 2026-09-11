@@ -1,0 +1,22 @@
+.hrprofile-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 500px;
+}
+
+.btn {
+    background: #4b98d6;
+    color: white;
+
+    border: none;
+    padding: 10px;
+
+    border-radius: 6px;
+    font-size: 14px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}

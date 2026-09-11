@@ -1,0 +1,26 @@
+
+form{
+    background: white;
+    max-width: 500px;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.btn{
+    background: #4b98d6;
+    color: white;
+
+    border: none;
+    padding: 8px 14px;
+
+    border-radius: 6px;
+    font-size: 14px;
+
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+.btn:hover{
+    background: rgb(39, 198, 74);
+    transform: scale(1.07);
+}

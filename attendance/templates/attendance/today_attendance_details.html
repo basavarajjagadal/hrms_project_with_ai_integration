@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'attendance/today_attendance_details.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h2 class="todaydetailh2">Today's Attendance Details - {{ today }}</h2>
+
+<table >
+
+<tr>
+<th>Employee Name</th>
+<th>Department</th>
+<th>Status</th>
+<th>Check-in Time</th>
+<th>Check-out Time</th>
+<th>Actions</th>
+</tr>
+
+{% for record in attendance_records %}
+
+<tr>
+
+<td>{{ record.employee.user.username }}</td>
+
+<td>{{ record.employee.department }}</td>
+
+<td>
+{% if record.attendance %}
+{{ record.attendance.status }}
+{% else %}
+Not Marked
+{% endif %}
+</td>
+
+<td>
+{% if record.attendance %}
+{{ record.attendance.check_in_time }}
+{% else %}
+-
+{% endif %}
+</td>
+
+<td>
+{% if record.attendance %}
+{{ record.attendance.check_out_time }}
+{% else %}
+-
+{% endif %}
+</td>
+
+<td>
+
+
+{% url 'mark_attendance' record.employee.id as mark_attendance_url %}
+
+{% if record.attendance %}
+  <button onclick="window.location.href='{{ mark_attendance_url }}'">
+    Edit
+  </button>
+{% else %}
+  <button onclick="window.location.href='{{ mark_attendance_url }}'">
+    Add
+  </button>
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+</table>
+<br>
+{% url "todayattandance" as todayattandance %}
+<button class="btn" onclick="window.location.href='{{todayattandance}}'">Back to Summary</button>
+{% endblock %}
+
+

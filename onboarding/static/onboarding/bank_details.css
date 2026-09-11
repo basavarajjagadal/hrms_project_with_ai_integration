@@ -1,0 +1,92 @@
+/* ===== PAGE TITLE ===== */
+h2 {
+    font-size: 24px;
+    color: #1f2937;
+    margin-bottom: 15px;
+}
+
+/* ===== TOP BUTTON (BACK) ===== */
+.btn-back {
+    background: #6b7280;
+    color: white;
+
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+button[type="button"]:hover {
+    background: #4b5563;
+}
+
+/* ===== FORM CARD ===== */
+form {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 450px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ===== LABELS ===== */
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #111827;
+}
+
+/* ===== INPUT FIELDS ===== */
+input {
+    width: 100%;
+    padding: 10px;
+
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+
+    font-size: 14px;
+    margin-bottom: 15px;
+    transition: 0.2s;
+}
+
+/* ===== FOCUS EFFECT ===== */
+input:focus {
+    border-color: #4b98d6;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(75,152,214,0.2);
+}
+
+/* ===== BUTTONS ===== */
+form button {
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Submit Button */
+form button[type="submit"] {
+    background: #22c55e;
+    color: white;
+}
+
+/* Cancel Button */
+form button[type="button"] {
+    background: #ef4444;
+    color: white;
+    margin-left: 10px;
+}
+
+/* Hover */
+form button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}

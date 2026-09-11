@@ -1,0 +1,43 @@
+.hrdashboard {
+    color: #1f2937;
+    margin-bottom: 10px;
+}
+
+/* Welcome text */
+.welcomehr {
+    color: #4b5563;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+
+.hr-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 500px;
+}
+
+.btn {
+    background: #4b98d6;
+    color: white;
+
+    border: none;
+    padding: 10px 16px;
+
+    border-radius: 8px;
+    font-size: 14px;
+
+    cursor: pointer;
+    transition: 0.3s;
+
+    margin-right: 10px;
+}
+
+/* Hover */
+.btn:hover {
+    background: #2fd450;
+    transform: scale(1.05);
+}

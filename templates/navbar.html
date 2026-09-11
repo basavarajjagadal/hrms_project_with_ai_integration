@@ -1,0 +1,13 @@
+<div class="navbar">
+
+<h3>HRMS System</h3>
+
+{% if user.is_authenticated %}
+
+<p ><span class="welcome">👋</span>Welcome {{ user.username }}</p>
+
+
+<button type="button" onclick="window.location.href='/accounts/logout/'">Logout</button>
+{% endif %}
+
+</div>

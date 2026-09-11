@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>All Hr's</h3>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Username</th>
+        <th>Email</th>
+    </tr>
+    {% for hr in hrs %}
+    <tr>
+        <td>{{hr.id}}</td>
+        <td>{{hr.username}}</td>
+        <td>{{hr.Email}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'hrsmenu' %}">Back</a>
+{% endblock %}

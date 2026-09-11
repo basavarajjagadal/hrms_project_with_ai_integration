@@ -1,0 +1,21 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'dashboard/hr.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="hr-card">
+<h1 class="hrdashboard">Hr dashboard</h1>
+<p class="welcomehr">Welcome {{user.username}}</p>
+
+{% url "hr_profile" as hr_profile %}
+<button class="btn" onclick="window.location.href='{{ hr_profile }}'">
+    View Profile
+</button>
+
+{% url "edit_hr_profile" as edit_hr_profile %}
+<button class="btn" onclick="window.location.href='{{edit_hr_profile}}'">Edit profile</button>
+</div>
+{% endblock %}

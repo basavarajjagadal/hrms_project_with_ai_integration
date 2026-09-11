@@ -1,0 +1,142 @@
+/* ===== PAGE TITLE ===== */
+.allrecords {
+    color: #1f2937;
+    margin-bottom: 15px;
+}
+
+/* ===== FILTER FORM ===== */
+form {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Labels */
+form label {
+    font-size: 13px;
+    color: #374151;
+}
+
+/* Inputs & Select */
+form input,
+form select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+form input:focus,
+form select:focus {
+    border-color: #4b98d6;
+}
+
+/* Filter button */
+.btn {
+    background: #22c55e;
+    color: white;
+
+    border: none;
+    padding: 7px 14px;
+
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #16a34a;
+}
+
+/* ===== TABLE ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Header */
+th {
+    background: #1f2937;
+    color: white;
+    padding: 12px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Cells */
+td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+/* Hover */
+tr:hover {
+    background: #f5f9ff;
+}
+
+/* Alternate row */
+tr:nth-child(even) {
+    background: #f9fafb;
+}
+
+/* ===== STATUS COLORS ===== */
+td:nth-child(3) {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+/* ===== EMPTY ROW ===== */
+td[colspan="5"] {
+    color: #6b7280;
+    font-style: italic;
+}
+
+/* ===== PAGINATION ===== */
+.pagination {
+    text-decoration: none;
+    padding: 6px 10px;
+    margin: 2px;
+
+    border-radius: 6px;
+    background: #e5e7eb;
+    color: #1f2937;
+
+    font-size: 13px;
+}
+
+/* Hover */
+.pagination:hover {
+    background: #4b98d6;
+    color: white;
+}
+
+/* Current page */
+strong {
+    padding: 6px 10px;
+    margin: 2px;
+
+    background: #4b98d6;
+    color: white;
+    border-radius: 6px;
+}
+
+/* Page info */
+span {
+    margin: 0 10px;
+    font-size: 14px;
+    color: #374151;
+}

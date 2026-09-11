@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>All Onboarding Records</h2>
+<table border="1">
+    <tr>
+        <th>Employee Id</th>
+        <th>Employee Name</th>
+        <th>Department</th>
+        <th>Status</th>
+        <th>Id Proof</th>
+        <th>Bank Details</th>
+        <th>Hr Verified</th>
+        <th>Laptop Assigned</th>
+    </tr>
+    {% for onboarding in onboardings %}
+    <tr>
+        <td>{{ onboarding.employee.employee_id }}</td>
+        <td>{{ onboarding.employee.user.username }}</td>
+        <td>{{ onboarding.employee.department }}</td>
+        <td>{{ onboarding.status }}</td>
+        <td>
+            {% if onboarding.id_proof_submitted %}
+                <i>✔</i>
+            {% else %}
+                <i>❌</i>
+            {% endif %}
+        </td>
+
+        <td>
+            {% if onboarding.bank_details_added %}
+                <i>✔</i>
+            {% else %}
+                <i>❌</i>
+            {% endif %}
+        </td>
+
+        <td>
+            {% if onboarding.hr_verified %}
+                <i>✔</i>
+            {% else %}
+                <i>❌</i>
+            {% endif %}
+        </td>
+
+        <td>
+            {% if onboarding.laptop_assigned %}
+                <i>✔</i>
+            {% else %}
+                <i>❌</i>
+            {% endif %}
+        </td> 
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

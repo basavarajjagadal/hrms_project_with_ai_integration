@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Verify Documents - {{ employee.user.get_full_name }}</h2>
+
+<hr>
+
+<p>
+Are you sure you want to verify the documents for 
+<b>{{ employee.user.get_full_name }}</b> ?
+</p>
+
+<p>
+<b>Note:</b> This action will mark the documents as verified and update the onboarding status.
+</p>
+
+<form method="post">
+{% csrf_token %}
+
+<button type="submit">Verify Documents</button>
+
+{% url "hr_onboarding_detail" onboarding.id as hr_onboarding_detail %}
+<button type="button" onclick="window.location.href='{{hr_onboarding_detail}}'">Cancel</button>
+
+</form>
+
+{% endblock %}

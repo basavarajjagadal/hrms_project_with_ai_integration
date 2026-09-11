@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'onboarding/hr_add_onboarding.css' %}">
+{% endblock %}
+{% block title %}HR - Add Onboarding{% endblock %}
+
+{% block content %}
+
+
+<form method="post">
+    {% csrf_token %}
+    <h3>Add Employee to Onboarding</h3>
+
+    <label for="employee">Select Employee</label><br><br>
+
+    <select name="employee" id="employee" {% if not employees %}disabled{% endif %}>
+        <option value="">-- Choose an employee --</option>
+        {% for emp in employees %}
+            <option value="{{ emp.id }}">
+                {{ emp.user.get_full_name }} ({{ emp.employee_id }})
+            </option>
+        {% endfor %}
+    </select>
+
+    <br><br>
+
+    {% if employees %}
+        <button class="btn" type="submit">Start Onboarding</button>
+    {% else %}
+        <p>All employees already have an onboarding record.</p>
+    {% endif %}
+
+    <br><br>
+    {% url "hr_onboarding_list" as hr_onboarding_list %}
+    <button class="btn" type="button" onclick="window.location.href='{{hr_onboarding_list}}'">Cancel</button>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'attendance/today.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="attendance-card">
+
+<h2>Today's Attendance</h2>
+
+{% if attendance %}
+
+<p>
+Check In Time:
+<b class="status-in">{{ attendance.check_in_time }}</b>
+</p>
+
+{% if attendance.check_out_time %}
+
+<p>
+Check Out Time:
+<b class="status-out">{{ attendance.check_out_time }}</b>
+</p>
+
+{% else %}
+
+<form method="post" action="{% url 'check_out' %}">
+{% csrf_token %}
+<button class="btn btn-out" type="submit">Check Out</button>
+</form>
+
+{% endif %}
+
+{% else %}
+
+<form method="post" action="{% url 'check_in' %}">
+{% csrf_token %}
+<button class=" btn btn-in" type="submit">Check In</button>
+</form>
+
+{% endif %}
+
+</div>
+{% endblock %}

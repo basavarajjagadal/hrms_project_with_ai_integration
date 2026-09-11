@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'employees/employee_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<h2 class="h2heading">Employee Details</h2>
+<fieldset>
+<legend><b>Personal Information</b></legend>
+<p><b>Username: </b>{{employee.user.username}}</p>
+<p><b>Fist Name: </b>{{employee.user.first_name}}</p>
+<p><b>Last Name: </b>{{employee.user.last_name}}</p>
+<p><b>Email: </b>{{employee.user.email}}</p>
+</fieldset>
+<br>
+<fieldset>
+<legend><b>Employee Information</b></legend>
+
+<p><b>Employee ID: </b>{{employee.employee_id}}</p>
+<p><b>Department: </b>{{employee.department}}</p>
+<p><b>Designation: </b>{{employee.designation}}</p>
+<p><b>Date of Joining: </b>{{employee.date_of_joining}}</p>
+</fieldset>
+
+{% url "employee_list" as employee_list %}
+<button class="btn" type="button" onclick="window.location.href='{{employee_list}}'">Back</button>
+
+{% endblock %}

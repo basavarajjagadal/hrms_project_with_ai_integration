@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'attendance/menu.css' %}">
+{% endblock %}
+{% block content %}
+<div class="menu-card">
+<h1>Attendance Menu</h1>
+<p>Welcome to Attendance Management</p>
+
+{% url "check_in_out" as check_in_out %}
+<button class="btn" class="btn1" onclick="window.location.href='{{ check_in_out}}'">Check In / Check Out</button>
+{% url "attendance_history" as attendance_history %}
+<button class="btn"  class="btn2" onclick="window.location.href='{{attendance_history}}'">Attendance History</button>
+
+</div>
+{% endblock %}
+
+

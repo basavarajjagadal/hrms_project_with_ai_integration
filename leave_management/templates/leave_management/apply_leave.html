@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'leave_management/apply_leave.css' %}">
+{% endblock %}
+
+{% block content %}
+<h2>Leaves Remaining :{{ remaining_days }}</h2>
+
+<label for="">Leave Meter</label>
+<meter value="{{remaining_days}}" min="0" max="20"></meter>
+<br> <br>
+<details>
+  <summary>Leaves Per Year</summary>
+  <p>20</p>
+</details>
+
+<fieldset>
+<legend><h3>Apply Leave</h3></legend>
+
+<form method="post">
+{% csrf_token %}
+
+<label>Start Date:</label>
+<input type="date" name="start_date" required>
+
+<br><br>
+
+<label>End Date:</label>
+<input type="date" name="end_date" required>
+
+<br><br>
+
+<label>Reason:</label>
+<br>
+<textarea name="reason"></textarea>
+
+<br><br>
+
+<button type="submit">Apply Leave</button>
+
+</form>
+</fieldset>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'attendance/todayattandance.css' %}">
+{% endblock %}
+
+<div class="summary-card">
+<h1>HR Attendance Summary</h1>
+<p>Date: <strong>{{ today|date:"d-m-Y" }}</strong></p>
+<p>Total Employees: <b>{{ total_employees }}</b></p>
+<p>Present: <b>{{ present_count }}</b></p>
+<p>Absent: <b>{{ absent_count }}</b></p>
+<p>Leave: <b>{{ leave_count }}</b></p>
+
+
+{% if missing_count > 0 %}
+    <div>
+        <strong>Note:</strong> {{ missing_count }} employee{{ missing_count|pluralize }} have no attendance record for today and are therefore counted as absent.
+    </div>
+{% endif %}
+<br>
+
+
+{% url "today_attendance_details" as today_attendance_details %}
+<button  class="btn" onclick="window.location.href='{{today_attendance_details}}'">Manage today's attendance</button>
+
+</div>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'onboarding/onboarding_status.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h2>My Onboarding Status</h2>
+
+<hr>
+
+<h3 class="status">Status: {{ onboarding.get_status_display }}</h3>
+
+<h3>Checklist</h3>
+
+<ul>
+
+<li>
+ID Proof Submitted :
+{% if onboarding.id_proof_submitted %}
+Yes
+{% else %}
+No
+{% endif %}
+</li>
+
+<li>
+Bank Details Added :
+{% if onboarding.bank_details_added %}
+Yes
+{% else %}
+No
+{% endif %}
+</li>
+
+<li>
+HR Verification :
+{% if onboarding.hr_verified %}
+Yes
+{% else %}
+No
+{% endif %}
+</li>
+
+<li>
+Laptop Assigned :
+{% if onboarding.laptop_assigned %}
+Yes
+{% else %}
+No
+{% endif %}
+</li>
+
+</ul>
+
+<hr>
+
+<h3>Actions</h3>
+
+{% if not onboarding.id_proof_submitted %}
+{% url "upload_id_proof" as upload_id_proof %}
+<button type="button" onclick="window.location.href='{{upload_id_proof}}'">Upload ID Proof</button>
+<br><br>
+{% endif %}
+
+{% if not onboarding.bank_details_added %}
+
+{% url "add_bank_details" as add_bank_details %}
+<button type="button" onclick="window.location.href='{{add_bank_details}}'">Add Bank Details</button>
+<br><br>
+{% endif %}
+
+{% url "onboarding_verification" as onboarding_verification %}
+<button type="button" onclick="window.location.href='{{onboarding_verification}}'">View Verification Status</button>
+
+{% endblock %}

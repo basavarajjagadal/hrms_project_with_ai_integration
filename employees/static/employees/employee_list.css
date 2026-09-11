@@ -1,0 +1,115 @@
+/* ===== PAGE TITLE ===== */
+.emplist {
+    color: #1f2937;
+    margin-bottom: 15px;
+}
+
+/* ===== FILTER FORM ===== */
+form {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    max-width: 400px;
+}
+
+/* Input field */
+input {
+    flex: 1;
+    padding: 8px 10px;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    outline: none;
+}
+
+input:focus {
+    border-color: #4b98d6;
+}
+
+/* Filter button */
+.btn1{
+    background: #22c55e;
+    color: white;
+
+    border: none;
+    padding: 8px 14px;
+
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn1:hover {
+    background: #16a34a;
+    transform: scale(1.07);
+}
+
+/* ===== TABLE ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Header */
+th {
+    background: #1f2937;
+    color: white;
+    padding: 12px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Cells */
+td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+/* Hover row */
+tr:hover {
+    background: #f5f9ff;
+}
+
+/* ===== ACTION BUTTON ===== */
+
+.btn{
+    background: #4b98d6;
+    color: white;
+
+    border: none;
+    padding: 6px 12px;
+
+    border-radius: 6px;
+    font-size: 13px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover{
+    background: #16a34a;
+    transform: scale(1.07);
+}
+
+/* ===== TOTAL COUNT ===== */
+.totalemp{
+    margin-top: 15px;
+    font-size: 15px;
+    color: #374151;
+}
+

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'leave_management/leave_summary.css' %}">
+{% endblock %}
+
+{% block content %}
+<fieldset>
+    <legend><h3>Leave Summary</h3></legend>
+
+<p><b>Pending: </b> {{ pending_count }}</p>
+<p><b>Approved: </b> {{ approved_count }}</p>
+<p><b>Rejected: </b> {{ rejected_count }}</p>
+</fieldset>
+
+
+<h3>Leave Request History</h3>
+
+<table border="1">
+
+<tr>
+<th>From</th>
+<th>To</th>
+<th>Days</th>
+<th>Reason</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+{% for leave in leaves %}
+
+<tr>
+
+<td>{{ leave.start_date }}</td>
+
+<td>{{ leave.end_date }}</td>
+
+<td>{{ leave.end_date|timeuntil:leave.start_date }}</td>
+
+<td>{{ leave.reason }}</td>
+
+<td>{{ leave.get_status_display }}</td>
+
+<td>
+{% url "cancel_leave" leave.id as cancel_leave %}
+{% if leave.status == "pending" %}
+<button onclick="window.location.href='{{cancel_leave}}'">Cancel</button>
+{% else %}
+-
+{% endif %}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+{% url "employee_dashboard" as employee_dashboard %}
+<button onclick="window.location.href='{{employee_dashboard}}'">Back to Dashboard</button>
+
+{% url "apply_leave" as apply_leave %}
+<button onclick="window.location.href='{{apply_leave}}'">Apply Leave</button>
+
+{% endblock %}

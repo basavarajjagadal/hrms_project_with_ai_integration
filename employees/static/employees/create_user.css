@@ -1,0 +1,77 @@
+/* ===== PAGE TITLE ===== */
+h2 {
+    color: #1f2937;
+    margin-bottom: 15px;
+}
+
+/* ===== FORM CARD ===== */
+form {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 600px;
+}
+
+/* ===== FIELDSET (SECTIONS) ===== */
+fieldset {
+    border: none;
+    background: #f9fafb;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Section title */
+legend {
+    font-size: 15px;
+    color: #4b98d6;
+}
+
+/* ===== LABELS ===== */
+label {
+    display: block;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 5px;
+}
+
+/* ===== INPUTS ===== */
+input {
+    width: 100%;
+    padding: 8px 10px;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    font-size: 14px;
+    outline: none;
+
+    margin-bottom: 10px;
+}
+
+/* Focus effect */
+input:focus {
+    border-color: #4b98d6;
+}
+
+/* ===== BUTTON ===== */
+button {
+    background: #22c55e;
+    color: white;
+
+    border: none;
+    padding: 10px 16px;
+
+    border-radius: 8px;
+    font-size: 14px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Hover */
+button:hover {
+    background: #16a34a;
+    transform: scale(1.05);
+}

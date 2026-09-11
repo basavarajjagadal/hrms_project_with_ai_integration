@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'onboarding/bank_details.css' %}">
+{% endblock %}
+
+{% block title %}Add Bank Details{% endblock %}
+
+{% block content %}
+
+<h2>Add Bank Details</h2>
+
+{% url "onboarding_status" as onboarding_status %}
+<button class="btn-back" type="button" onclick="window.location.href='{{onboarding_status}}'">Back to Status</button>
+
+<form method="post">
+    {% csrf_token %}
+
+    <label for="bank_name">Bank Name:</label><br>
+    <input type="text" id="bank_name" name="bank_name"
+           value="{% if bank_details %}{{ bank_details.bank_name }}{% endif %}" required><br><br>
+
+    <label for="account_number">Account Number:</label><br>
+    <input type="text" id="account_number" name="account_number"
+           value="{% if bank_details %}{{ bank_details.account_number }}{% endif %}" required><br><br>
+
+    <label for="ifsc_code">IFSC Code:</label><br>
+    <input type="text" id="ifsc_code" name="ifsc_code"
+           value="{% if bank_details %}{{ bank_details.ifsc_code }}{% endif %}" required><br><br>
+
+    <button type="submit">
+        {% if bank_details %}Update Bank Details{% else %}Add Bank Details{% endif %}
+    </button>
+
+    {% url "onboarding_status" as onboarding_status %}
+    <button type="button" onclick="window.location.href='{{onboarding_status}}'">Cancel</button>
+
+</form>
+
+{% endblock %}

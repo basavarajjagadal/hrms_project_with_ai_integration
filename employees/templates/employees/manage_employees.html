@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Manage Employees</h2>
+<table border="1">
+<tr>
+    <th>
+    Employees Id   
+    </th>
+    <th>
+    Username
+    </th>
+    <th>
+    Department
+    </th>
+    <th>
+    Designation
+    </th>
+    <th>
+    Joining Date
+    </th>
+    <th>
+    Actions
+    </th>
+</tr>
+{% for emp in employees %}
+<tr>
+    <td>
+        {{ emp.employee_id  }}
+    </td>
+    <td>
+        {{ emp.user.username }}
+    </td>
+    <td>
+        {{ emp.department}}
+    </td>
+    <td>
+        {{ emp.designation }}
+    </td>
+    <td>
+        {{ emp.joining_date}}
+    </td>
+    <td>
+        {% url "edit_employees" emp.id as edit_employees %}
+        <button type="button" onclick="window.location.href='{{edit_employees}}'">Edit</button>
+        {% url "employee_delete" emp.id as employee_delete %}
+        <button type="button" onclick="window.location.href='{{employee_delete}}'">Delete</button>
+
+    </td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

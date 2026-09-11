@@ -1,0 +1,33 @@
+.menu-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 500px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+
+    background: #4b98d6;
+    color: white;
+
+    border: none;
+    padding: 14px;
+
+    border-radius: 10px;
+    font-size: 15px;
+
+    cursor: pointer;
+    transition: 0.3s;
+
+    margin-bottom: 15px;
+}
+
+/* Hover */
+.btn:hover {
+    background: #45d769;
+    transform: scale(1.03);
+}

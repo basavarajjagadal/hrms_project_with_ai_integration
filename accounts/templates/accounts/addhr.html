@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Add New Hr</h2>
+<form method="POST">
+    {% csrf_token %}
+
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username">
+    <br><br>
+
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email">
+    <br><br>
+
+    <label for="password">Password</label>
+    <input type="text" name="password" id="password">
+    <br><br>
+
+    <button type="submit">Add</button>
+</form>
+<br>
+{% url "hrsmenu" as hrsmenu %}
+<button onclick="window.location.href='{{ hrsmenu }}'">Back</button>
+{% endblock %}

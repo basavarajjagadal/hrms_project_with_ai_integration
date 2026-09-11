@@ -1,0 +1,126 @@
+/* ===== TOP BUTTON ===== */
+.onboardingbutton {
+    background: #4b98d6;
+    color: white;
+
+    border: none;
+    padding: 10px 16px;
+
+    border-radius: 8px;
+    font-size: 14px;
+
+    cursor: pointer;
+    transition: 0.3s;
+
+    margin-bottom: 15px;
+}
+
+.onboardingbutton:hover {
+    background:#22c55e;
+    transform: scale(1.05);
+}
+
+/* ===== FILTER FORM ===== */
+form {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Dropdown */
+select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* Filter button */
+form button {
+    background: #22c55e;
+    color: white;
+    font-weight: 500;
+
+    border-radius: 5px;
+
+}
+
+form button:hover {
+    background: #16a34a;
+}
+
+/* ===== TABLE ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Header */
+th {
+    background: #1f2937;
+    color: white;
+    padding: 12px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Cells */
+td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+/* Hover effect */
+tr:hover {
+    background: #f5f9ff;
+}
+
+/* ===== STATUS COLORS ===== */
+td:nth-child(4) {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+/* ===== CHECKMARK COLORS ===== */
+td {
+    font-size: 16px;
+}
+
+/* Optional highlight */
+td:contains("✔") {
+    color: #22c55e;
+}
+
+td:contains("❌") {
+    color: #ef4444;
+}
+
+/* ===== ACTION BUTTON ===== */
+td button {
+    background: #6366f1;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 13px;
+}
+
+td button:hover {
+    background: #50df43;
+    transform: scale(1.05);
+}
